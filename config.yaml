@@ -1,0 +1,39 @@
+# Flight Tracker Configuration
+
+location:
+  latitude: -37.7964   # Footscray, Melbourne, Victoria
+  longitude: 144.9008  # Footscray, Melbourne, Victoria
+  altitude: 20         # Meters above sea level
+
+overhead_zone:
+  radius_km: 3.0           # Radius in kilometers
+  min_altitude_m: 500      # Minimum altitude in meters
+  max_altitude_m: 12000    # Maximum altitude in meters (optional)
+
+display:
+  led_rows: 32
+  led_cols: 64
+  led_chain: 1
+  led_parallel: 1
+  brightness: 80
+  rotation_seconds: 8      # Time to show each flight
+  font_path: "fonts/7x13.bdf"
+  enabled: true            # Set to false for testing without LED hardware
+
+api:
+  provider: "opensky"      # opensky, adsbexchange, aviationstack
+  api_key: ""              # If required
+  cache_duration: 300      # Cache flight data for 5 minutes (seconds)
+  request_timeout: 10      # Seconds
+  rate_limit_delay: 1      # Delay between API requests (seconds)
+
+adsb:
+  data_source: "http://localhost:8080/data/aircraft.json"
+  update_interval: 2       # Seconds between updates
+  max_age: 30             # Maximum age of aircraft data (seconds)
+
+logging:
+  level: "INFO"           # DEBUG, INFO, WARNING, ERROR
+  file: "logs/flight-tracker.log"
+  max_bytes: 10485760     # 10MB
+  backup_count: 5

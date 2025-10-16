@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Tracker Dashboard - Footscray, Melbourne</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>✈️ Flight Tracker Dashboard</h1>
+            <p class="subtitle">Footscray, Melbourne, Victoria</p>
+            <div class="status-indicator">
+                <span class="status-dot" id="statusDot"></span>
+                <span id="statusText">Connecting...</span>
+            </div>
+        </header>
+
+        <!-- Main Grid -->
+        <div class="dashboard-grid">
+            <!-- System Status Card -->
+            <div class="card">
+                <h2>System Status</h2>
+                <div class="stat-group">
+                    <div class="stat">
+                        <span class="stat-label">Uptime</span>
+                        <span class="stat-value" id="uptime">-</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Last Update</span>
+                        <span class="stat-value" id="lastUpdate">-</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Detection Radius</span>
+                        <span class="stat-value" id="radius">-</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Altitude Range</span>
+                        <span class="stat-value" id="altitudeRange">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics Card -->
+            <div class="card">
+                <h2>Statistics</h2>
+                <div class="stat-group">
+                    <div class="stat">
+                        <span class="stat-label">Current Aircraft</span>
+                        <span class="stat-value large" id="currentAircraft">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Overhead Now</span>
+                        <span class="stat-value large highlight" id="overheadCount">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Total Seen</span>
+                        <span class="stat-value" id="totalSeen">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">API Calls</span>
+                        <span class="stat-value" id="apiCalls">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Overhead Aircraft Card -->
+            <div class="card wide">
+                <h2>Aircraft Overhead</h2>
+                <div id="overheadList" class="aircraft-list">
+                    <p class="empty-state">Waiting for aircraft...</p>
+                </div>
+            </div>
+
+            <!-- All Aircraft Card -->
+            <div class="card wide">
+                <h2>All Detected Aircraft</h2>
+                <div class="controls">
+                    <button onclick="updateData()" class="btn-refresh">🔄 Refresh</button>
+                </div>
+                <div id="aircraftList" class="aircraft-list">
+                    <p class="empty-state">No aircraft detected</p>
+                </div>
+            </div>
+
+            <!-- Recent Flights Card -->
+            <div class="card wide">
+                <h2>Recent Overhead Flights</h2>
+                <div id="recentFlights" class="recent-list">
+                    <p class="empty-state">No recent flights</p>
+                </div>
+            </div>
+
+            <!-- Configuration Card -->
+            <div class="card">
+                <h2>Configuration</h2>
+                <div id="configDisplay" class="config-display">
+                    <p>Loading...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>

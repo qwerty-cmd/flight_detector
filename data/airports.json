@@ -1,0 +1,17 @@
+{
+  "LHR": {"name": "London Heathrow", "country": "United Kingdom", "city": "London"},
+  "JFK": {"name": "John F. Kennedy International", "country": "United States", "city": "New York"},
+  "LAX": {"name": "Los Angeles International", "country": "United States", "city": "Los Angeles"},
+  "CDG": {"name": "Charles de Gaulle", "country": "France", "city": "Paris"},
+  "DXB": {"name": "Dubai International", "country": "United Arab Emirates", "city": "Dubai"},
+  "HND": {"name": "Tokyo Haneda", "country": "Japan", "city": "Tokyo"},
+  "ORD": {"name": "O'Hare International", "country": "United States", "city": "Chicago"},
+  "SIN": {"name": "Singapore Changi", "country": "Singapore", "city": "Singapore"},
+  "AMS": {"name": "Amsterdam Schiphol", "country": "Netherlands", "city": "Amsterdam"},
+  "FRA": {"name": "Frankfurt", "country": "Germany", "city": "Frankfurt"},
+  "IST": {"name": "Istanbul", "country": "Turkey", "city": "Istanbul"},
+  "SYD": {"name": "Sydney Kingsford Smith", "country": "Australia", "city": "Sydney"},
+  "YYZ": {"name": "Toronto Pearson", "country": "Canada", "city": "Toronto"},
+  "GRU": {"name": "São Paulo–Guarulhos", "country": "Brazil", "city": "São Paulo"},
+  "BOM": {"name": "Chhatrapati Shivaji Maharaj", "country": "India", "city": "Mumbai"}
+}

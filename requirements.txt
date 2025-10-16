@@ -1,0 +1,18 @@
+# Core dependencies
+requests>=2.31.0
+pyyaml>=6.0.1
+python-dateutil>=2.8.2
+geopy>=2.4.0
+flask>=3.0.0
+flask-cors>=4.0.0
+
+# Testing dependencies
+pytest>=7.4.3
+pytest-cov>=4.1.0
+pytest-mock>=3.12.0
+
+# Optional: LED Matrix (requires compilation on Raspberry Pi)
+# rgbmatrix - install separately with: https://github.com/hzeller/rpi-rgb-led-matrix
+
+# Optional: ADS-B decoding
+pyModeS>=2.13
