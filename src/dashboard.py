@@ -15,6 +15,12 @@ from src.adsb_processor import ADSBProcessor
 from src.geo_filter import GeoFilter
 from src.flight_api import FlightAPIClient
 
+# Check for demo mode
+DEMO_MODE = os.environ.get('DEMO_MODE', 'false').lower() == 'true'
+
+if DEMO_MODE:
+    from src.demo_data import DemoDataGenerator
+
 
 class FlightTrackerDashboard:
     """Web dashboard for flight tracker."""
@@ -50,6 +56,15 @@ class FlightTrackerDashboard:
         self.current_aircraft = []
         self.overhead_aircraft = []
         self.recent_flights = []
+
+        # Demo mode setup
+        self.demo_mode = DEMO_MODE
+        if self.demo_mode:
+            print("🎭 Running in DEMO MODE with simulated data")
+            self.demo_generator = DemoDataGenerator(
+                center_lat=location['latitude'],
+                center_lon=location['longitude']
+            )
 
         # Setup routes
         self._setup_routes()
@@ -197,15 +212,20 @@ class FlightTrackerDashboard:
     def _update_data(self) -> None:
         """Update aircraft data."""
         try:
-            # Fetch aircraft data
-            aircraft_list = self.adsb_processor.fetch_aircraft_data()
+            # Use demo data or real data
+            if self.demo_mode:
+                aircraft_list = self.demo_generator.get_aircraft()
+                overhead = self.demo_generator.get_overhead_aircraft()
+            else:
+                # Fetch aircraft data
+                aircraft_list = self.adsb_processor.fetch_aircraft_data()
+                # Filter overhead aircraft
+                overhead = self.geo_filter.filter_overhead_aircraft(aircraft_list)
+
             self.current_aircraft = aircraft_list
 
             if aircraft_list:
                 self.stats['total_aircraft_seen'] += len(aircraft_list)
-
-            # Filter overhead aircraft
-            overhead = self.geo_filter.filter_overhead_aircraft(aircraft_list)
 
             # Track new overhead aircraft
             for aircraft in overhead:
